@@ -1,0 +1,54 @@
+package zadania_koncowe;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class zadanie_2 {
+
+    private WebDriver driver;
+
+    @Before
+    public void setUp() {
+
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.get("https://prod-kurs.coderslab.pl/index.php?controller=authentication&back=my-account");
+    }
+
+    @Test
+    public void MyStoreTest2() {
+        WebElement element = driver.findElement(By.name("email"));
+        element.clear();
+        element.sendKeys("dlatestow6@o2.pl");
+
+        WebElement element1;
+        element1 = driver.findElement(By.name("password"));
+        element1.clear();
+        element1.sendKeys("qwerty");
+        element1.submit();
+
+        WebElement element2;
+        element2 = driver.findElement(By.name("s"));
+        element2.clear();
+        element2.sendKeys("Hummingbird Printed Sweater");
+        element2.submit();
+
+        WebElement element3;
+        element3 = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div[3]/div/div[1]/article[1]/div/div[1]/h2/a"));
+        element3.click();
+
+        WebElement element4;
+        element4 = driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[3]"));
+        element4.click();
+
+        WebElement element5;
+        element5 = driver.findElement(By.xpath("//*[@id=\"quantity_wanted\"]"));
+        element5.clear();
+        element5.sendKeys("5");
+        element5.click();
+    }
+}
