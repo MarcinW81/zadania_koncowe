@@ -49,6 +49,6 @@ public class zadanie_2 {
         element5 = driver.findElement(By.xpath("//*[@id=\"quantity_wanted\"]"));
         element5.clear();
         element5.sendKeys("5");
-        element5.click();
+        element5.submit();
     }
 }
