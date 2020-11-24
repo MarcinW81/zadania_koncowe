@@ -54,7 +54,5 @@ public class zadanie_2 {
         element5.sendKeys("5" + Keys.ENTER);
       
 
-
-
     }
 }
