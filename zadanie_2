@@ -3,6 +3,7 @@ package zadania_koncowe;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,11 +18,10 @@ public class zadanie_2 {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://prod-kurs.coderslab.pl/index.php?controller=authentication&back=my-account");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
-    public void MyStoreTest2() {
+    public void MyStoreTest2() throws InterruptedException {
         WebElement element = driver.findElement(By.name("email"));
         element.clear();
         element.sendKeys("dlatestow6@o2.pl");
@@ -33,23 +33,28 @@ public class zadanie_2 {
         element1.submit();
 
         WebElement element2;
-        element2 = driver.findElement(By.name("s"));
+        element2 = driver.findElement(By.name("s")); //wyszukanie swetra po nazwie
         element2.clear();
         element2.sendKeys("Hummingbird Printed Sweater");
         element2.submit();
 
-        WebElement element3;
+        WebElement element3; //wybranie swetra
         element3 = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div[3]/div/div[1]/article[1]/div/div[1]/h2/a"));
         element3.click();
 
-        WebElement element4;
+        WebElement element4; //wybranie rozmiaru L
         element4 = driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[3]"));
         element4.click();
 
-        WebElement element5;
+        Thread.sleep(3000);
+
+        WebElement element5; //podanie ilości 5 sztuk
         element5 = driver.findElement(By.xpath("//*[@id=\"quantity_wanted\"]"));
         element5.clear();
-        element5.sendKeys("5");
-        element5.submit();
+        element5.sendKeys("5" + Keys.ENTER);
+      
+
+
+
     }
 }
