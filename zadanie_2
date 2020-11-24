@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
 public class zadanie_2 {
 
     private WebDriver driver;
@@ -21,7 +22,9 @@ public class zadanie_2 {
     }
 
     @Test
-    public void MyStoreTest2() throws InterruptedException {
+    public void MyStoreTest2()
+            throws InterruptedException
+    {
         WebElement element = driver.findElement(By.name("email"));
         element.clear();
         element.sendKeys("dlatestow6@o2.pl");
@@ -52,7 +55,7 @@ public class zadanie_2 {
         element5 = driver.findElement(By.xpath("//*[@id=\"quantity_wanted\"]"));
         element5.clear();
         element5.sendKeys("5" + Keys.ENTER);
-        
+
         // pokaż koszyk
         driver.get("https://prod-kurs.coderslab.pl/index.php?controller=cart&action=show");
         driver.navigate().refresh();
@@ -61,7 +64,41 @@ public class zadanie_2 {
         WebElement element6;
         element6 = driver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[1]/div[2]/div/a"));
         element6.click();
-      
+
+        //potwierdz adres wysylki
+        WebElement element7;
+        element7 = driver.findElement(By.xpath("//*[@id=\"checkout-addresses-step\"]/div/div/form/div[2]/button"));
+        element7.click();
+
+        //potwierdz metode dostawy
+        WebElement element8;
+        element8 = driver.findElement(By.name("confirmDeliveryOption"));
+        element8.click();
+
+        //wybierz metode platnosci
+        WebElement element9;
+        element9 = driver.findElement(By.xpath("//*[@id=\"payment-option-1-container\"]/label/span"));
+        element9.click();
+
+        //potwierdz akcept regulaminu
+        WebElement element10;
+        element10 = driver.findElement(By.xpath("//*[@id=\"conditions-to-approve\"]/ul/li/div[2]/label"));
+        element10.click();
+
+        //zamow z obowiazkiem zaplaty
+        WebElement element11;
+        element11 = driver.findElement(By.cssSelector("#payment-confirmation > div.ps-shown-by-js > button"));
+        element11.click();
+
+
+        driver.manage().window().maximize();
+        Thread.sleep(2000);
+
+
+
+
+
+
 
     }
 }
