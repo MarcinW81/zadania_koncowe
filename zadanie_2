@@ -17,6 +17,7 @@ public class zadanie_2 {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://prod-kurs.coderslab.pl/index.php?controller=authentication&back=my-account");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
