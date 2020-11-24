@@ -52,6 +52,15 @@ public class zadanie_2 {
         element5 = driver.findElement(By.xpath("//*[@id=\"quantity_wanted\"]"));
         element5.clear();
         element5.sendKeys("5" + Keys.ENTER);
+        
+        // pokaż koszyk
+        driver.get("https://prod-kurs.coderslab.pl/index.php?controller=cart&action=show");
+        driver.navigate().refresh();
+
+        //idz do kasy
+        WebElement element6;
+        element6 = driver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[1]/div[2]/div/a"));
+        element6.click();
       
 
     }
