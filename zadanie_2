@@ -92,13 +92,6 @@ public class zadanie_2 {
 
 
         driver.manage().window().maximize();
-        Thread.sleep(2000);
-
-
-
-
-
-
 
     }
 }
