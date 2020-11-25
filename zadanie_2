@@ -1,17 +1,23 @@
 package zadania_koncowe;
 
+
+import org.apache.commons.io.FileUtils;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+
+import java.io.File;
+import java.io.IOException;
+
 
 
 public class zadanie_2 {
 
     private WebDriver driver;
+
 
     @Before
     public void setUp() {
@@ -23,8 +29,9 @@ public class zadanie_2 {
 
     @Test
     public void MyStoreTest2()
-            throws InterruptedException
-    {
+            throws InterruptedException {
+
+        //logowanie sie do sklepu
         WebElement element = driver.findElement(By.name("email"));
         element.clear();
         element.sendKeys("dlatestow6@o2.pl");
@@ -35,28 +42,33 @@ public class zadanie_2 {
         element1.sendKeys("qwerty");
         element1.submit();
 
+        //wyszukanie swetra po nazwie
         WebElement element2;
-        element2 = driver.findElement(By.name("s")); //wyszukanie swetra po nazwie
+        element2 = driver.findElement(By.name("s"));
         element2.clear();
         element2.sendKeys("Hummingbird Printed Sweater");
         element2.submit();
 
-        WebElement element3; //wybranie swetra
+        //wybranie swetra
+        WebElement element3;
         element3 = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div[3]/div/div[1]/article[1]/div/div[1]/h2/a"));
         element3.click();
 
-        WebElement element4; //wybranie rozmiaru L
+        //wybranie rozmiaru L
+        WebElement element4;
         element4 = driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[3]"));
         element4.click();
 
+        //zamrożenie na 3 sek, zeby strona sie nie przeladowala
         Thread.sleep(3000);
 
-        WebElement element5; //podanie ilości 5 sztuk
+        //wybor ilosci 5 sztuk
+        WebElement element5;
         element5 = driver.findElement(By.xpath("//*[@id=\"quantity_wanted\"]"));
         element5.clear();
         element5.sendKeys("5" + Keys.ENTER);
 
-        // pokaż koszyk
+        // pokaz koszyk
         driver.get("https://prod-kurs.coderslab.pl/index.php?controller=cart&action=show");
         driver.navigate().refresh();
 
@@ -90,8 +102,20 @@ public class zadanie_2 {
         element11 = driver.findElement(By.cssSelector("#payment-confirmation > div.ps-shown-by-js > button"));
         element11.click();
 
-
         driver.manage().window().maximize();
 
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(scrFile, new File("c:\\Users\\Marcin\\Desktop\\zadanie domowe 2\\screenshot.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    @After
+    public void tearDown() throws Exception {
+        driver.quit();
     }
 }
+
