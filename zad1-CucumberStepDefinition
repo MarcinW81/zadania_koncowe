@@ -85,9 +85,9 @@ public class zadanieKoncowe1 {
         Assert.assertTrue(addAdressValidation.contains("Address successfully added!"));
     }
 
-    @And("close browser")
-    public void closeBrowser() {
-      driver.quit();
-    }
 
+    @And("quit browser")
+    public void quitBrowser() {
+    }
 }
+
