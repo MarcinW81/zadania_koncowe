@@ -1,6 +1,8 @@
+
 package zadania_koncowe;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -57,16 +59,28 @@ public class zadanie_1 {
         element7.clear();
         element7.sendKeys("Pcim");
 
+
         //pole zip
         WebElement element8 = driver.findElement(By.name("postcode"));
         element8.clear();
         element8.sendKeys("01-234");
         element8.submit();
-        
+
+
+        //sprawdzenie, czy wyświetlił się komunikat o powodzeniu dodania adresu
+        String addAdressValidation = driver.findElement(By.xpath("//*[@id=\"notifications\"]/div/article/ul/li")).getText();
+        Assert.assertTrue(addAdressValidation.contains("Address successfully added!"));
+
     }
+
+
+
     @After
     public void tearDown() throws Exception {
-        driver.quit();
+       //driver.quit();
     }
-    
+
 }
+
+
+
