@@ -1,0 +1,11 @@
+Feature: zadanie-koncowe-1
+
+  Scenario: user adds the new address
+
+Given user is on login page
+When user inputs email address and password and click sign in button
+When user clicks the field addresses
+When user clicks create new address
+When user inputs the fields alias, address, city, zip/postal code
+Then the new address id added
+And close browser
