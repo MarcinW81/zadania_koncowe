@@ -87,7 +87,7 @@ public class zadanieKoncowe1 {
 
 
     @And("quit browser")
-    public void quitBrowser() {
+    public void tearDown() {
     }
 }
 
