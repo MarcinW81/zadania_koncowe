@@ -85,7 +85,6 @@ public class zadanieKoncowe1 {
         Assert.assertTrue(addAdressValidation.contains("Address successfully added!"));
     }
 
-
     @And("quit browser")
     public void tearDown() {
     }
